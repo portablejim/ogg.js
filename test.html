@@ -1,19 +1,24 @@
 <!doctype html>
-<script src="build/aurora.js"></script>
+<html>
+    <head>
+    <script src="build/aurora.js"></script>
 <script src="build/ogg.js"></script>
 <script src="build/vorbis.js"></script>
 <script src="build/opus.js"></script>
-
-<input type="file">
 <script>
 var player = null;
-document.querySelector("input").onchange = function(e) {
+function play(e) {
     if (player) player.stop();
     
-    player = AV.Player.fromFile(e.target.files[0]);
+    player = AV.Player.fromURL("http://sermons.dpc.org.au/acts/dial/20140209.mp3");
     player.on('error', function(e) { throw e });
     
-    console.log(player)    
+    console.log(player)
     player.play();
 }
 </script>
+</head>
+<body onload="play()">
+    
+
+</body>
